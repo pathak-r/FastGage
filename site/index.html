@@ -4,20 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Structra — snagging reports from photos</title>
-<meta name="description" content="Walk the unit room by room. Structra grades each defect and gives you a PDF to send. For apartments, villas and offices in the UAE.">
+<meta name="description" content="Walk an apartment, villa or office. Structra grades each defect and gives you a PDF to send.">
 <meta name="theme-color" content="#F2F2F7">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Structra">
 <meta property="og:url" content="https://www.fastgage.co/structra/">
 <meta property="og:title" content="Take photos of defects. Structra makes the report.">
-<meta property="og:description" content="Guided room-by-room capture, findings graded by severity, and a PDF you can send. For apartments, villas and offices.">
+<meta property="og:description" content="A snagging report from the photos you take. Graded findings, a box on each photo, and a PDF to send.">
 <meta property="og:image" content="https://www.fastgage.co/structra/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Take photos of defects. Structra makes the report.">
-<meta name="twitter:description" content="Guided room-by-room capture, findings graded by severity, and a PDF you can send.">
+<meta name="twitter:description" content="A snagging report from the photos you take. Graded findings, a box on each photo, and a PDF to send.">
 <meta name="twitter:image" content="https://www.fastgage.co/structra/assets/og.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,6 +53,7 @@ body{
 }
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
+ul{list-style:none}
 
 .grain{
   position:fixed;inset:0;z-index:-1;
@@ -74,10 +75,10 @@ a{color:inherit}
 h1,h2{font-family:var(--serif);font-weight:700;line-height:1.12;letter-spacing:-.02em}
 h1{font-size:clamp(2.1rem,5.8vw,3.15rem)}
 h2{font-size:clamp(1.7rem,4vw,2.35rem)}
-h3{font-size:clamp(1.15rem,2.4vw,1.35rem);font-weight:600;line-height:1.2}
-.lede{color:var(--muted);max-width:34ch;line-height:1.5}
+h3{font-size:clamp(1.05rem,2.2vw,1.2rem);font-weight:600;line-height:1.25}
+.lede{color:var(--muted);max-width:36ch;line-height:1.5}
 .muted{color:var(--muted)}
-p{max-width:40ch}
+p{max-width:42ch}
 .eyebrow{
   font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
   color:var(--accent);margin-bottom:10px
@@ -105,7 +106,8 @@ p{max-width:40ch}
 }
 .site-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .nav-app{
-  color:var(--tint);text-decoration:none;font-weight:600;font-size:.95rem
+  color:var(--tint);text-decoration:none;font-weight:600;font-size:.95rem;
+  white-space:nowrap
 }
 .nav-app:hover{opacity:.7}
 
@@ -113,8 +115,8 @@ p{max-width:40ch}
   display:inline-flex;align-items:center;justify-content:center;gap:8px;
   min-height:50px;padding:0 20px;border-radius:var(--radius);
   border:0.5px solid transparent;
-  font-family:var(--sans);font-weight:600;font-size:1.05rem;
-  text-decoration:none;cursor:pointer
+  font-family:var(--sans);font-weight:600;font-size:1.02rem;
+  text-decoration:none;cursor:pointer;text-align:center
 }
 .btn:hover{opacity:.88}
 .btn-primary{background:var(--tint);border-color:var(--tint);color:#fff}
@@ -123,12 +125,16 @@ p{max-width:40ch}
 }
 .btn svg{width:18px;height:18px;flex:none}
 .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-.cta-note{margin-top:14px;font-size:.88rem;color:var(--muted)}
+.cta-note{margin-top:14px;font-size:.88rem;color:var(--muted);max-width:46ch}
+@media(max-width:560px){
+  .cta-row{flex-direction:column;align-items:stretch}
+  .cta-row .btn{width:100%}
+}
 
 .hero{
   position:relative;overflow:hidden;
   padding:clamp(48px,8vw,80px) 0 clamp(40px,7vw,64px);
-  min-height:min(88svh,820px);display:flex;align-items:center
+  min-height:min(88svh,860px);display:flex;align-items:center
 }
 .hero-plane{
   position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none
@@ -157,7 +163,7 @@ p{max-width:40ch}
 @media(min-width:860px){
   .hero .wrap{grid-template-columns:1.05fr .95fr}
 }
-.hero h1{margin-bottom:14px;max-width:14ch}
+.hero h1{margin-bottom:14px;max-width:15em}
 
 .screen{
   width:min(100%,280px);margin:0 auto;
@@ -183,7 +189,25 @@ p{max-width:40ch}
 .js .reveal.in{opacity:1;transform:none}
 .js .reveal[data-d="1"]{transition-delay:.08s}
 
-.how{padding:clamp(20px,4vw,28px) 0 clamp(48px,8vw,72px)}
+.gets{padding:clamp(36px,6vw,56px) 0 clamp(12px,3vw,20px)}
+.gets h2{max-width:22ch}
+.get-list{
+  display:grid;gap:12px;
+  margin-top:clamp(22px,4vw,32px)
+}
+@media(min-width:700px){
+  .get-list{grid-template-columns:1fr 1fr}
+}
+.get-list li{
+  background:var(--surface);
+  border:0.5px solid var(--border);
+  border-radius:12px;
+  padding:18px 18px 16px
+}
+.get-list h3{margin-bottom:6px}
+.get-list p{max-width:none;font-size:.98rem}
+
+.how{padding:clamp(28px,5vw,40px) 0 clamp(48px,8vw,72px)}
 .how-head{margin-bottom:clamp(8px,2vw,16px)}
 .step{
   display:grid;gap:clamp(22px,4vw,40px);align-items:center;
@@ -202,7 +226,7 @@ p{max-width:40ch}
   font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
   color:var(--tint);margin-bottom:8px
 }
-.step h3{margin-bottom:10px}
+.step h3{margin-bottom:10px;font-size:clamp(1.15rem,2.4vw,1.35rem)}
 .step p{max-width:36ch}
 .step-media .screen{width:min(100%,260px)}
 
@@ -216,8 +240,12 @@ p{max-width:40ch}
   font-weight:600;text-decoration:none
 }
 .sample-link:hover{opacity:.7}
+.cta-note a{
+  color:var(--tint);font-weight:600;text-decoration:none;white-space:nowrap
+}
+.cta-note a:hover{opacity:.7}
 
-.evidence{padding:clamp(28px,6vw,56px) 0 clamp(56px,9vw,88px)}
+.evidence{padding:clamp(28px,6vw,48px) 0 clamp(28px,5vw,40px)}
 .evidence-head{text-align:center;margin-bottom:clamp(24px,4vw,40px)}
 .evidence-head h2{margin-bottom:12px}
 .evidence-head p{margin:0 auto;max-width:38ch}
@@ -241,18 +269,11 @@ p{max-width:40ch}
 }
 .shot.in .tag{opacity:1;transform:none}
 
-.honesty{
-  max-width:50ch;padding:4px 0 4px 16px;
-  border-left:3px solid var(--accent)
-}
-.honesty p{max-width:46ch}
-
 .closing{text-align:center;padding:clamp(48px,8vw,80px) 0 clamp(72px,12vw,104px)}
 .closing .mark{display:inline-block;font-size:clamp(1.15rem,2.6vw,1.4rem)}
 .closing .rule{margin:0 auto 22px}
-.closing h2{margin-bottom:12px}
-.closing .lede{margin:0 auto}
 .closing .cta-row{justify-content:center}
+.closing .cta-note{margin-left:auto;margin-right:auto}
 
 footer{
   border-top:0.5px solid var(--border);padding:28px 0 44px;
@@ -297,9 +318,10 @@ footer a:hover{opacity:.7}
   </div>
   <div class="wrap">
     <div class="reveal">
+      <div class="eyebrow">Snagging reports</div>
       <h1>Take photos of defects.<br>Structra makes the report.</h1>
       <p class="lede">
-        Walk the unit room by room. You get a PDF to send. For apartments, villas and offices in the UAE.
+        For apartments, villas and offices. Structra grades each defect and gives you a PDF to send.
       </p>
       <div class="cta-row">
         <a class="btn btn-primary"
@@ -307,11 +329,12 @@ footer a:hover{opacity:.7}
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
           Get the app
         </a>
-        <a class="btn btn-secondary" href="assets/structra-sample-report.pdf" target="_blank" rel="noopener">
-          See a sample report
+        <a class="btn btn-secondary"
+           href="mailto:hello@fastgage.co?subject=Android%20version%20of%20Structra&amp;body=Hello%2C%0A%0AI%20would%20like%20the%20Android%20version%20of%20Structra.%0A%0A">
+          Request Android version
         </a>
       </div>
-      <p class="cta-note">iPhone. Free on the App Store.</p>
+      <p class="cta-note"><a href="assets/structra-sample-report.pdf" target="_blank" rel="noopener">See a sample report</a></p>
     </div>
     <div class="reveal" data-d="1">
       <div class="screen">
@@ -319,6 +342,57 @@ footer a:hover{opacity:.7}
              alt="Structra snagging report with summary and severity counts">
       </div>
       <div class="screen-label">Export as PDF</div>
+    </div>
+  </div>
+</section>
+
+<section class="gets">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">What you get</div>
+      <h2>A report you can send</h2>
+      <p class="lede">The walk, the grades, and the photos, in one PDF.</p>
+    </div>
+    <ul class="get-list reveal" data-d="1">
+      <li>
+        <h3>A guided walk</h3>
+        <p class="muted">Room by room. Structra names them for you — Bedroom 1, Bathroom 1.</p>
+      </li>
+      <li>
+        <h3>Each finding graded</h3>
+        <p class="muted">Critical, Major, Minor, or Observation. You see the counts before you send.</p>
+      </li>
+      <li>
+        <h3>A box on the photo</h3>
+        <p class="muted">The crack, stain or gap is marked, so the contractor can see what you mean.</p>
+      </li>
+      <li>
+        <h3>A PDF to send</h3>
+        <p class="muted">Summary, severity counts, and what to fix on each finding.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="evidence">
+  <div class="wrap">
+    <div class="evidence-head reveal">
+      <div class="eyebrow">On the photo</div>
+      <h2>Each problem shows on the photo</h2>
+      <p class="muted">
+        A crack at a window, graded Major. The box is what the contractor sees in the PDF.
+      </p>
+    </div>
+
+    <div class="shot" id="shot">
+      <img src="assets/evidence-crack.jpg" width="1000" height="750"
+           alt="Evidence photo of a diagonal crack at a window reveal" loading="lazy">
+      <svg viewBox="0 0 1000 750" preserveAspectRatio="none" aria-hidden="true">
+        <rect x="302" y="213" width="198" height="324"/>
+      </svg>
+      <div class="tag" style="left:30.2%;top:calc(28.4% - 34px)">
+        Major · Crack at window
+      </div>
     </div>
   </div>
 </section>
@@ -353,9 +427,8 @@ footer a:hover{opacity:.7}
         <div class="step-num">02</div>
         <h3>Take the photos</h3>
         <p class="muted">
-          Each room has a seven-shot list: overview, ceiling, walls, floor, windows and doors,
+          Each room has a shot list: overview, ceiling, walls, floor, windows and doors,
           fittings, then close-ups of defects. Shoot in the app or pick from your library.
-          Dark or small photos get flagged before you leave.
         </p>
       </div>
       <div class="step-media">
@@ -394,56 +467,22 @@ footer a:hover{opacity:.7}
   </div>
 </section>
 
-<section class="evidence">
-  <div class="wrap">
-    <div class="evidence-head reveal">
-      <div class="eyebrow">On the photo</div>
-      <h2>Each problem shows on the photo</h2>
-      <p class="muted">
-        A box marks the crack, stain or gap. Easy to show the contractor what you mean.
-      </p>
-    </div>
-
-    <div class="shot" id="shot">
-      <img src="assets/evidence-crack.jpg" width="1000" height="750"
-           alt="Evidence photo of a diagonal crack at a window reveal" loading="lazy">
-      <svg viewBox="0 0 1000 750" preserveAspectRatio="none" aria-hidden="true">
-        <rect x="302" y="213" width="198" height="324"/>
-      </svg>
-      <div class="tag" style="left:30.2%;top:calc(28.4% - 34px)">
-        Major · Crack at window
-      </div>
-    </div>
-  </div>
-</section>
-
-<section style="padding:0 0 clamp(48px,8vw,72px)">
-  <div class="wrap reveal">
-    <div class="honesty">
-      <p class="muted">
-        Structra is AI-assisted visual inspection. It reports what is visible in the photos you take.
-        It is not an engineer survey. You check every finding before you send the report.
-      </p>
-    </div>
-  </div>
-</section>
-
 <section class="closing">
   <div class="wrap reveal">
     <div class="mark">Structra</div>
     <div class="rule"></div>
-    <h2>Start with one unit.</h2>
-    <p class="lede">Free on the App Store for iPhone.</p>
     <div class="cta-row">
       <a class="btn btn-primary"
          href="https://apps.apple.com/in/app/structra-inspect/id6795109088">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         Get the app
       </a>
-      <a class="btn btn-secondary" href="assets/structra-sample-report.pdf" target="_blank" rel="noopener">
-        See a sample report
+      <a class="btn btn-secondary"
+         href="mailto:hello@fastgage.co?subject=Android%20version%20of%20Structra&amp;body=Hello%2C%0A%0AI%20would%20like%20the%20Android%20version%20of%20Structra.%0A%0A">
+        Request Android version
       </a>
     </div>
+    <p class="cta-note"><a href="assets/structra-sample-report.pdf" target="_blank" rel="noopener">See a sample report</a></p>
   </div>
 </section>
 
@@ -454,6 +493,7 @@ footer a:hover{opacity:.7}
       <a href="/structra/privacy/">Privacy</a>
       <a href="/structra/support/">Support</a>
       <a href="https://apps.apple.com/in/app/structra-inspect/id6795109088">App Store</a>
+      <a href="mailto:hello@fastgage.co?subject=Android%20version%20of%20Structra&amp;body=Hello%2C%0A%0AI%20would%20like%20the%20Android%20version%20of%20Structra.%0A%0A">Request Android</a>
     </div>
   </div>
 </footer>
