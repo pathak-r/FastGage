@@ -3,52 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FastGage — software for the real estate industry</title>
-  <meta name="description" content="A straightforward set of tools for a complicated business. Based in Abu Dhabi.">
-  <meta name="theme-color" content="#ffffff">
+  <title>FastGage — software for property operations</title>
+  <meta name="description" content="Focused software for property managers and inspectors in the UAE. Makers of MyCommunity and Structra.">
+  <meta name="theme-color" content="#F3F1EA">
   <link rel="canonical" href="https://www.fastgage.co/">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="FastGage">
   <meta property="og:url" content="https://www.fastgage.co/">
-  <meta property="og:title" content="FastGage — software for the real estate industry">
-  <meta property="og:description" content="A straightforward set of tools for a complicated business. Based in Abu Dhabi.">
+  <meta property="og:title" content="FastGage — software for property operations">
+  <meta property="og:description" content="Focused software for property managers and inspectors in the UAE. Makers of MyCommunity and Structra.">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="FastGage — software for the real estate industry">
-  <meta name="twitter:description" content="A straightforward set of tools for a complicated business. Based in Abu Dhabi.">
+  <meta name="twitter:title" content="FastGage — software for property operations">
+  <meta name="twitter:description" content="Focused software for property managers and inspectors in the UAE. Makers of MyCommunity and Structra.">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="home.css">
 </head>
 <body>
   <header class="nav">
     <div class="wrap nav-inner">
       <a class="logo" href="/">FastGage</a>
       <nav aria-label="Primary">
-        <a href="#about">About</a>
+        <a href="#mycommunity">MyCommunity</a>
+        <a href="#structra">Structra</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="product" id="mycommunity" aria-labelledby="myc-heading">
       <div class="wrap">
-        <p class="eyebrow">Abu Dhabi, UAE</p>
-        <h1>Software for the real estate industry.</h1>
-        <p class="lede">A straightforward set of tools for a complicated business.</p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="mailto:hello@fastgage.co">Write to us</a>
+        <p class="label"><span>01</span>Property management</p>
+        <div class="product-grid">
+          <div class="copy">
+            <h2 id="myc-heading">MyCommunity</h2>
+            <p class="line">A management portal and resident app, connected.</p>
+            <p>Notices, messages and maintenance requests go straight to residents through the app. Rent, PDC cheques, Tawtheeq renewals and assets are handled in the same portal.</p>
+            <p class="status">In pilot with property management companies in Abu Dhabi.</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="https://demo.mycommunityuae.com" rel="noopener">See the demo</a>
+              <a class="btn" href="https://apps.apple.com/us/app/myc-res/id6772097989" rel="noopener">App Store</a>
+              <a class="btn" href="https://play.google.com/store/apps/details?id=com.mycommunityuae.app" rel="noopener">Google Play</a>
+            </div>
+            <p class="more">
+              <a href="assets/myc-walkthrough.mp4" data-video="assets/myc-walkthrough.mp4">Watch the 1-minute walkthrough</a>
+              <span aria-hidden="true">·</span>
+              <a href="https://mycommunityuae.com" rel="noopener">mycommunityuae.com</a>
+            </p>
+          </div>
+          <figure class="media">
+            <div class="frame">
+              <video src="assets/myc-loop.mp4" poster="assets/myc-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="A resident reports a repair in the app and the request appears in the management portal."></video>
+            </div>
+            <figcaption><span>Fig. 1</span>A repair reported in the app arrives in the portal.</figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
-    <section class="band" id="about" aria-labelledby="about-heading">
-      <div class="wrap split">
+    <section class="product" id="structra" aria-labelledby="str-heading">
+      <div class="wrap">
+        <p class="label"><span>02</span>Inspections</p>
+        <div class="product-grid">
+          <div class="copy">
+            <h2 id="str-heading">Structra</h2>
+            <p class="line">Snagging reports from photos.</p>
+            <p>Walk an apartment, villa or office and photograph each defect. Structra grades the findings and produces a handover report ready to send as a PDF.</p>
+            <p class="status">Available on the App Store.</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="structra/">Learn more</a>
+              <a class="btn" href="https://apps.apple.com/in/app/structra-inspect/id6795109088" rel="noopener">App Store</a>
+            </div>
+          </div>
+          <figure class="media">
+            <div class="frame phones">
+              <img src="structra/assets/screen-findings.jpg" alt="A graded finding: water staining under a vanity unit, marked critical, with the defect boxed on the photo." width="645" height="1398" loading="lazy">
+              <img src="structra/assets/screen-report.jpg" alt="Report summary for an apartment with findings counted by severity." width="645" height="1398" loading="lazy">
+            </div>
+            <figcaption><span>Fig. 2</span>A graded finding and the report summary.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="contact" aria-labelledby="about-heading">
+      <div class="wrap about-grid">
         <div>
           <h2 id="about-heading">About</h2>
-          <p>We are based in Abu Dhabi and build practical solutions for the property sector.</p>
+          <p>FastGage builds practical software for the UAE property sector. Each product does one job well and is shaped by the people who use it every day.</p>
         </div>
-        <div id="contact">
+        <div>
           <h2>Contact</h2>
           <a class="mail" href="mailto:hello@fastgage.co">hello@fastgage.co</a>
         </div>
@@ -56,14 +104,39 @@
     </section>
   </main>
 
-  <footer class="site-foot">
-    <div class="wrap foot-inner">
-      <p>&copy; 2026 FastGage. Abu Dhabi, UAE.</p>
-      <nav aria-label="Footer">
-        <a href="structra/privacy/">Privacy</a>
-        <a href="structra/support/">Support</a>
-      </nav>
+  <footer class="titleblock">
+    <div class="wrap tb-grid">
+      <div><span>Company</span>FastGage</div>
+      <div><span>Location</span>Abu Dhabi, UAE</div>
+      <div><span>Products</span>MyCommunity · Structra</div>
+      <div><span>Rev.</span>Nov 2026</div>
+      <div class="tb-links"><span>Structra</span><a href="structra/privacy/">Privacy</a> · <a href="structra/support/">Support</a></div>
     </div>
   </footer>
+
+  <dialog class="player" id="player" aria-label="MyCommunity walkthrough">
+    <button class="close" type="button" aria-label="Close">&times;</button>
+    <video controls playsinline preload="none"></video>
+  </dialog>
+
+  <script>
+    (function () {
+      var d = document.getElementById('player');
+      if (!d || typeof d.showModal !== 'function') return;
+      var v = d.querySelector('video');
+      document.querySelectorAll('[data-video]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          v.src = a.getAttribute('data-video');
+          d.showModal();
+          v.play().catch(function () {});
+        });
+      });
+      function shut() { v.pause(); d.close(); }
+      d.querySelector('.close').addEventListener('click', shut);
+      d.addEventListener('click', function (e) { if (e.target === d) shut(); });
+      d.addEventListener('close', function () { v.pause(); });
+    })();
+  </script>
 </body>
 </html>
