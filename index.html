@@ -21,6 +21,106 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="home.css">
+  <style>
+    .pair {
+      display: grid;
+      align-items: stretch;
+      margin-top: 28px;
+    }
+    .pair .product {
+      padding: 28px 0 48px;
+      border-bottom: 0;
+      min-width: 0;
+    }
+    #structra { background: var(--paper-2); }
+    .pair .media { margin: 8px 0 20px; }
+    .pair .frame { border: 0; background: transparent; padding: 0; }
+    .pair .frame.phones {
+      justify-content: flex-start;
+      gap: 14px;
+      padding: 0;
+      background: transparent;
+      overflow: hidden;
+    }
+    .pair .frame.phones img {
+      width: min(46%, 168px);
+      border: 0;
+      border-radius: 16px 16px 0 0;
+      box-shadow: none;
+    }
+    .pair .copy .vision {
+      color: var(--ink);
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+    #structra .line { margin-bottom: 4px; }
+    .pair .copy p { max-width: none; }
+
+    .reports { color: var(--ink); margin-top: 2px; }
+    .reports b { font-weight: 600; }
+
+    #mycommunity .status {
+      color: var(--ink);
+      font-weight: 500;
+      margin-top: 8px;
+    }
+
+    @media (min-width: 860px) {
+      .pair { grid-template-columns: 1.5fr 1fr; }
+      #mycommunity { padding-right: 40px; }
+      #structra { padding-left: 40px; }
+    }
+
+    @media (max-width: 859px) {
+      .pair { margin-top: 8px; }
+      #structra { margin-top: 8px; }
+    }
+
+    .stage { position: relative; z-index: 0; }
+    :root { --draw: #8C877A; }
+
+    /* Red stays on buttons and one arc per side; links underline in warm grey. */
+    .more a { text-decoration-color: var(--draw); }
+    .pair .copy .vision { font-weight: 400; }
+
+    /* The loop's own background is lighter than the page, so frame it on purpose. */
+    #mycommunity .frame { border: 1px solid var(--line); background: #F6F7F2; }
+    #mycommunity .frame video { background: #F6F7F2; }
+
+    .field, .skyline { display: none; pointer-events: none; }
+    @media (min-width: 860px) {
+      .field {
+        display: block;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: calc((100% - min(100%, 1120px)) / 2 + 24px + (min(100%, 1120px) - 48px) * 0.6);
+        background: var(--paper-2);
+      }
+    }
+    /* Line-drawn elevations and construction arcs in the side margins. */
+    .skyline { fill: none; stroke-width: 1; stroke-linecap: round; }
+    .skyline * { vector-effect: non-scaling-stroke; }
+    .skyline .bldg { stroke: var(--draw); stroke-width: 1.5; }
+    .skyline .floors { stroke: var(--draw); opacity: 0.5; }
+    .skyline .arc { stroke: var(--draw); opacity: 0.7; }
+    .skyline .arc.dash { stroke-dasharray: 2 6; }
+    .skyline .arc.red { stroke: var(--red); opacity: 0.6; }
+    @media (min-width: 1440px) {
+      .skyline {
+        display: block;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        width: min(calc((100% - var(--max)) / 2), 340px);
+        height: 100%;
+      }
+      .skyline.left { right: calc(50% + var(--max) / 2); }
+      .skyline.right { left: calc(50% + var(--max) / 2); }
+    }
+  </style>
 </head>
 <body>
   <header class="nav">
@@ -34,61 +134,73 @@
     </div>
   </header>
 
-  <main>
-    <section class="product" id="mycommunity" aria-labelledby="myc-heading">
-      <div class="wrap">
-        <p class="label"><span>01</span>Property management</p>
-        <div class="product-grid">
-          <div class="copy">
-            <h2 id="myc-heading">MyCommunity</h2>
-            <p class="line">A management portal and resident app, connected.</p>
-            <p>Notices, messages and maintenance requests go straight to residents through the app. Rent, PDC cheques, Tawtheeq renewals and assets are handled in the same portal.</p>
-            <p class="status">In pilot with property management companies in Abu Dhabi.</p>
-            <div class="actions">
-              <a class="btn btn-primary" href="https://demo.mycommunityuae.com" rel="noopener">See the demo</a>
-              <a class="btn" href="https://apps.apple.com/us/app/myc-res/id6772097989" rel="noopener">App Store</a>
-              <a class="btn" href="https://play.google.com/store/apps/details?id=com.mycommunityuae.app" rel="noopener">Google Play</a>
-            </div>
-            <p class="more">
-              <a href="assets/myc-walkthrough.mp4" data-video="assets/myc-walkthrough.mp4">Watch the 1-minute walkthrough</a>
-              <span aria-hidden="true">·</span>
-              <a href="https://mycommunityuae.com" rel="noopener">mycommunityuae.com</a>
-            </p>
+  <main id="top">
+    <div class="stage">
+    <div class="field" aria-hidden="true"></div>
+    <svg class="skyline left" viewBox="0 0 300 900" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">
+      <path class="arc dash" d="M10 860A290 290 0 0 1 300 570"/>
+      <path class="arc" d="M-80 860A380 380 0 0 1 300 480"/>
+      <path class="arc red" d="M-170 860A470 470 0 0 1 300 390"/>
+      <path class="floors" d="M100 300V860M130 300V860M70 330H160M70 360H160M70 390H160M70 420H160M70 450H160M70 480H160M70 510H160M70 540H160M70 570H160M70 600H160M70 630H160M70 660H160M70 690H160M70 720H160M70 750H160M70 780H160M70 810H160M70 840H160M160 630H250M160 660H250M160 690H250M160 720H250M160 750H250M160 780H250M160 810H250M160 840H250M190 600V860M220 600V860M20 750H70M20 780H70M20 810H70"/>
+      <path class="bldg" d="M70 860V300H85V250H145V300H160V860M115 250V170M160 860V600H250V860M70 860V720H20V860M0 860H300"/>
+    </svg>
+    <svg class="skyline right" viewBox="0 0 300 900" preserveAspectRatio="xMinYMax meet" aria-hidden="true">
+      <path class="arc dash" d="M0 500A360 360 0 0 1 360 860"/>
+      <path class="arc" d="M0 420A440 440 0 0 1 440 860"/>
+      <path class="arc red" d="M0 340A520 520 0 0 1 520 860"/>
+      <path class="floors" d="M185 380V860M150 410H220M150 440H220M150 470H220M150 500H220M150 530H220M150 560H220M150 590H220M150 620H220M150 650H220M150 680H220M150 710H220M150 740H220M150 770H220M150 800H220M150 830H220M220 590H285M220 620H285M220 650H285M220 680H285M220 710H285M220 740H285M220 770H285M220 800H285M220 830H285M242 560V860M263 560V860M90 790H150"/>
+      <path class="bldg" d="M150 860V380H162V358H208V380H220V860M174 358V340H196V358M220 860V560H285V860M150 860V760H90V860M105 860V820A15 15 0 0 1 135 820V860M0 860H300"/>
+    </svg>
+    <div class="wrap pair">
+      <section class="product" id="mycommunity" aria-labelledby="myc-heading">
+        <div class="copy">
+          <h2 id="myc-heading">MyCommunity</h2>
+          <p class="line">A portal for the property company, and an app for residents.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://demo.mycommunityuae.com" rel="noopener">See the demo</a>
+            <a class="btn" href="https://apps.apple.com/us/app/myc-res/id6772097989" rel="noopener">App Store</a>
+            <a class="btn" href="https://play.google.com/store/apps/details?id=com.mycommunityuae.app" rel="noopener">Google Play</a>
           </div>
-          <figure class="media">
-            <div class="frame">
-              <video src="assets/myc-loop.mp4" poster="assets/myc-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="A resident reports a repair in the app and the request appears in the management portal."></video>
-            </div>
-            <figcaption><span>Fig. 1</span>A repair reported in the app arrives in the portal.</figcaption>
-          </figure>
+          <p class="more">
+            <a href="assets/myc-walkthrough.mp4" data-video="assets/myc-walkthrough.mp4">Watch the 1-minute walkthrough</a>
+            <span aria-hidden="true">·</span>
+            <a href="https://mycommunityuae.com" rel="noopener">mycommunityuae.com</a>
+          </p>
         </div>
-      </div>
-    </section>
+        <figure class="media">
+          <div class="frame">
+            <video src="assets/myc-loop.mp4" poster="assets/myc-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="A resident reports a repair in the app and the request appears in the management portal."></video>
+          </div>
+        </figure>
+        <div class="copy">
+          <p>Notices, messages and maintenance requests go through the app. Rent, PDC cheques, Tawtheeq renewals and assets stay in the portal.</p>
+          <p class="reports"><b>Reports.</b> Rent roll, occupancy, collection rate, overdue rent, cash flow, and profit by property.</p>
+          <p class="status">In pilot with property management companies in Abu Dhabi. On the App Store and Google Play.</p>
+        </div>
+      </section>
 
-    <section class="product" id="structra" aria-labelledby="str-heading">
-      <div class="wrap">
-        <p class="label"><span>02</span>Inspections</p>
-        <div class="product-grid">
-          <div class="copy">
-            <h2 id="str-heading">Structra</h2>
-            <p class="line">Snagging reports from photos.</p>
-            <p>Walk an apartment, villa or office and photograph each defect. Structra grades the findings and produces a handover report ready to send as a PDF.</p>
-            <p class="status">Available on the App Store.</p>
-            <div class="actions">
-              <a class="btn btn-primary" href="structra/">Learn more</a>
-              <a class="btn" href="https://apps.apple.com/in/app/structra-inspect/id6795109088" rel="noopener">App Store</a>
-            </div>
+      <section class="product" id="structra" aria-labelledby="str-heading">
+        <div class="copy">
+          <h2 id="str-heading">Structra</h2>
+          <p class="line">Snagging reports from photos.</p>
+          <p class="line vision">Powered by the latest vision models.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="structra/">Learn more</a>
+            <a class="btn" href="https://apps.apple.com/in/app/structra-inspect/id6795109088" rel="noopener">App Store</a>
           </div>
-          <figure class="media">
-            <div class="frame phones">
-              <img src="structra/assets/screen-findings.jpg" alt="A graded finding: water staining under a vanity unit, marked critical, with the defect boxed on the photo." width="645" height="1398" loading="lazy">
-              <img src="structra/assets/screen-report.jpg" alt="Report summary for an apartment with findings counted by severity." width="645" height="1398" loading="lazy">
-            </div>
-            <figcaption><span>Fig. 2</span>A graded finding and the report summary.</figcaption>
-          </figure>
         </div>
-      </div>
-    </section>
+        <figure class="media">
+          <div class="frame phones">
+            <img src="structra/assets/screen-findings.jpg" alt="A graded finding: water staining under a vanity unit, marked critical, with the defect boxed on the photo." width="645" height="1398" loading="lazy">
+            <img src="structra/assets/screen-report.jpg" alt="Report summary for an apartment with findings counted by severity." width="645" height="1398" loading="lazy">
+          </div>
+        </figure>
+        <div class="copy">
+          <p>Walk an apartment, villa or office and photograph each defect. Structra grades each finding and produces a handover report ready to send as a PDF.</p>
+        </div>
+      </section>
+    </div>
+    </div>
 
     <section class="about" id="contact" aria-labelledby="about-heading">
       <div class="wrap about-grid">
